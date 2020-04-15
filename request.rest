@@ -1,0 +1,13 @@
+POST http://localhost:5000/api/v1/login
+Content-Type: application/json
+
+{
+  "userId": "test",
+  "passWord": "qwerty"
+}
+
+###
+
+GET http://localhost:5000/api/v1/users
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDAwMSIsImlhdCI6MTU4Njk1MTc4OCwiZXhwIjoxNTg2OTUyOTg4fQ.P963SRNbwG_ffowjB6_LUnv7e2hOzTIw2ErqNeTA7sA
+
