@@ -2,12 +2,19 @@ POST http://localhost:5000/api/v1/login
 Content-Type: application/json
 
 {
-  "userId": "test",
+  "userId": "00001",
   "passWord": "qwerty"
 }
 
 ###
+POST http://localhost:5000/api/v1/login
+Content-Type: application/json
 
+{
+  "userId": "00002",
+  "passWord": "asdfgh"
+}
+
+###
 GET http://localhost:5000/api/v1/users
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDAwMSIsImlhdCI6MTU4Njk1MTc4OCwiZXhwIjoxNTg2OTUyOTg4fQ.P963SRNbwG_ffowjB6_LUnv7e2hOzTIw2ErqNeTA7sA
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDAwMSIsImlhdCI6MTU4NzAwMDE2NiwiZXhwIjoxNTg3MDAxMzY2fQ.sx7gma9MU2Wh-fw9L60-mgmM_7TlMWKUhmg7lKIRCXs

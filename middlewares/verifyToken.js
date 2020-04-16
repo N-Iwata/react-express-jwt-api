@@ -2,11 +2,19 @@ const jwt = require("jsonwebtoken");
 const config = require("../config/jwt.config");
 
 function verifyToken(req, res, next) {
-  const token = req.body.token || req.query.token || req.headers["x-access-token"];
+  // console.log(req.headers.authorization);
+  // →Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDAwMSIsImlhdCI6MTU4NzAwMDE2NiwiZXhwIjoxNTg3MDAxMzY2fQ.sx7gma9MU2Wh-fw9L60-mgmM_7TlMWKUhmg7lKIRCXs
+  // splitで半角スペースで分割して後ろ側がTokenになる
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(" ")[1];
+
   if (token) {
-    jwt.verify(token, config.jwt.secret, function(error, decoded) {
+    jwt.verify(token, config.jwt.secret, function (error, decoded) {
       if (error) {
-        return res.json({ success: false, message: "トークンの認証に失敗しました。" });
+        return res.status(403).send({
+          isSuccess: false,
+          message: "トークンの認証に失敗しました。"
+        });
       }
       else {
         req.decoded = decoded;
@@ -15,9 +23,9 @@ function verifyToken(req, res, next) {
     });
   }
   else {
-    return res.status(403).send({
-        success: false,
-        message: "トークンがありません。",
+    return res.status(401).send({
+      isSuccess: false,
+      message: "トークンがありません。",
     });
 
   }
