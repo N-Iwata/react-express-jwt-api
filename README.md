@@ -2,8 +2,7 @@
 
 ## <u>概要</u>
 
-ReactとNode.js(express)とJWTで作る認証・
-認可周りの実装のAPI側のプロジェクトです。
+ReactとNode.js(express)とJWTで作る認証・認可周りの実装のAPI側のプロジェクトです。
 
 * Node(v12.15.0)
 * express(v4.17.1)
