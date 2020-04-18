@@ -13,21 +13,18 @@ function verifyToken(req, res, next) {
       if (error) {
         return res.status(403).send({
           isSuccess: false,
-          message: "トークンの認証に失敗しました。"
+          message: "トークンの認証に失敗しました。",
         });
-      }
-      else {
+      } else {
         req.decoded = decoded;
         next();
       }
     });
-  }
-  else {
+  } else {
     return res.status(401).send({
       isSuccess: false,
       message: "トークンがありません。",
     });
-
   }
 }
 module.exports = verifyToken;

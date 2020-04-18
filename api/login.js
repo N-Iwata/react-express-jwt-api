@@ -7,21 +7,22 @@ const config = require("../config/jwt.config");
 // ----------------------
 router.post("/", (req, res) => {
   // 本来はデータベースからユーザーIDとパスワードを認証するが割愛
-  if( req.body.userId == "00001" && req.body.passWord == "qwerty" ){
+  if (req.body.userId == "00001" && req.body.passWord == "qwerty") {
     const payload = {
-      userId : req.body.userId,
-    }
+      userId: req.body.userId,
+    };
     const token = jwt.sign(payload, config.jwt.secret, config.jwt.options);
 
     res.json({
       isSuccess: true,
-      token: token
+      token: token,
+    });
+  } else {
+    res.json({
+      isSuccess: false,
+      message: "ユーザーIDまたはパスワードが違います。",
     });
   }
-  else{
-    res.json({ isSuccess: false, message: "ユーザーIDまたはパスワードが違います。" });
-  }
-
 });
 
 module.exports = router;
