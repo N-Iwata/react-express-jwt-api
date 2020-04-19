@@ -7,7 +7,10 @@ const config = require("../config/jwt.config");
 // ----------------------
 router.post("/", (req, res) => {
   // 本来はデータベースからユーザーIDとパスワードを認証するが割愛
-  if (req.body.userId == "00001" && req.body.passWord == "qwerty") {
+  if (
+    (req.body.userId == "001" && req.body.passWord == "qwerty") ||
+    (req.body.userId == "002" && req.body.passWord == "asdfgh")
+  ) {
     const payload = {
       userId: req.body.userId,
     };
