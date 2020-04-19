@@ -9,12 +9,12 @@ router.get("/", verifyToken, (req, res) => {
   let results = {};
   if (req.decoded.userId == "001") {
     results = {
-      userId: "001",
+      userId: req.decoded.userId,
       name: "Tom",
     };
   } else if (req.decoded.userId == "002") {
     results = {
-      userId: "00001",
+      userId: req.decoded.userId,
       name: "Mike",
     };
   }
